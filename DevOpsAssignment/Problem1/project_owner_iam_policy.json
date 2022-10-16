@@ -1,0 +1,100 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "APIGateway",
+            "Effect": "Allow",
+            "Action": [
+                "apigateway:DELETE",
+                "apigateway:PUT",
+                "apigateway:PATCH",
+                "apigateway:POST"
+            ],
+            "Resource": "arn:aws:apigateway:us-east-1::/apis/dummy_id/*"
+        },
+        {
+            "Sid": "Cloudwatch",
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:GetMetricStream",
+                "cloudwatch:GetMetricData",
+                "cloudwatch:ListMetrics",
+                "cloudwatch:ListMetricStreams"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "CloudwatchLogs",
+            "Effect": "Allow",
+            "Action": [
+                "logs:GetLogRecord",
+                "logs:StartQuery",
+                "logs:GetLogEvents",
+                "logs:FilterLogEvents",
+                "logs:StopQuery",
+                "logs:GetQueryResults",
+                "logs:GetLogDelivery",
+                "logs:GetLogGroupFields"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "CodeBuild",
+            "Effect": "Allow",
+            "Action": [
+                "codebuild:UpdateProject",
+                "codebuild:StopBuildBatch",
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+                "codebuild:RetryBuild",
+                "codebuild:RetryBuildBatch",
+                "codebuild:StartBuildBatch"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Lambda",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:UpdateFunctionEventInvokeConfig",
+                "lambda:AddLayerVersionPermission",
+                "lambda:UpdateFunctionCode",
+                "lambda:RemoveLayerVersionPermission",
+                "lambda:UpdateEventSourceMapping",
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:AddPermission",
+                "lambda:RemovePermission"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "CodeCommit",
+            "Effect": "Allow",
+            "Action": [
+                "codecommit:CreateBranch",
+                "codecommit:CreateCommit",
+                "codecommit:MergePullRequestByThreeWay",
+                "codecommit:UpdateRepositoryDescription",
+                "codecommit:CreatePullRequest",
+                "codecommit:UpdatePullRequestApprovalState",
+                "codecommit:PostCommentForPullRequest",
+                "codecommit:UpdatePullRequestDescription",
+                "codecommit:MergePullRequestBySquash",
+                "codecommit:GitPush",
+                "codecommit:CreateRepository",
+                "codecommit:UpdatePullRequestTitle",
+                "codecommit:UpdatePullRequestStatus",
+                "codecommit:MergeBranchesBySquash",
+                "codecommit:MergeBranchesByFastForward",
+                "codecommit:CreateUnreferencedMergeCommit",
+                "codecommit:MergeBranchesByThreeWay",
+                "codecommit:MergePullRequestByFastForward",
+                "codecommit:DeleteRepository",
+                "codecommit:DeleteFile",
+                "codecommit:DeleteBranch"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

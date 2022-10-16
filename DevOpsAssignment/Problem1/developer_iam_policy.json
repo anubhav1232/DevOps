@@ -1,0 +1,81 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CodeCommit",
+            "Effect": "Allow",
+            "Action": [
+                "codecommit:MergeBranchesBySquash",
+                "codecommit:PostCommentForPullRequest",
+                "codecommit:UpdatePullRequestDescription",
+                "codecommit:DeleteRepository",
+                "codecommit:CreateCommit",
+                "codecommit:UpdatePullRequestTitle",
+                "codecommit:MergeBranchesByFastForward",
+                "codecommit:MergePullRequestBySquash",
+                "codecommit:MergePullRequestByThreeWay",
+                "codecommit:UpdateRepositoryDescription",
+                "codecommit:MergeBranchesByThreeWay",
+                "codecommit:MergePullRequestByFastForward",
+                "codecommit:CreatePullRequest",
+                "codecommit:GitPush",
+                "codecommit:UpdatePullRequestStatus",
+                "codecommit:UpdatePullRequestApprovalState"
+            ],
+            "Resource": "arn:aws:codecommit:us-east-2:111111111111:MyDemoRepo"
+        },
+        {
+            "Sid": "CodeCommmitDenyRules",
+            "Effect": "Deny",
+            "Action": [
+                "codecommit:MergeBranchesByFastForward",
+                "codecommit:MergeBranchesBySquash",
+                "codecommit:MergePullRequestBySquash",
+                "codecommit:MergePullRequestByThreeWay",
+                "codecommit:MergeBranchesByThreeWay",
+                "codecommit:MergePullRequestByFastForward",
+                "codecommit:PutFile",
+                "codecommit:GitPush"
+            ],
+            "Resource": "arn:aws:codecommit:us-east-2:111111111111:MyDemoRepo",
+            "Condition": {
+                "Null": {
+                    "codecommit:References": "false"
+                },
+                "StringEqualsIfExists": {
+                    "codecommit:References": [
+                        "refs/heads/prod",
+                        "refs/heads/staging"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "Cloudwatch",
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:GetMetricStream",
+                "cloudwatch:GetMetricData",
+                "cloudwatch:ListMetrics",
+                "cloudwatch:ListMetricStreams"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "CloudwatchLogs",
+            "Effect": "Allow",
+            "Action": [
+                "logs:GetLogRecord",
+                "logs:StartQuery",
+                "logs:GetLogEvents",
+                "logs:FilterLogEvents",
+                "logs:StopQuery",
+                "logs:GetQueryResults",
+                "logs:GetLogDelivery",
+                "logs:GetLogGroupFields"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
